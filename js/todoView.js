@@ -7,15 +7,19 @@ var TodoView = Backbone.View.extend({
 		this.model.on("change", this.render, this);  // refreshes the view so .toggleClass(below) gets updated
 	},
 	events: {
-		"click #checkBox": "onClickCheckBox"
+		"click .checkBox": "onClickCheckBox"
+	},
+	OnClickCount: function() {
+		console.log("click")
 	},
 	onClickCheckBox: function() {
+		var count = parseInt($("#todoLeft").text())
 		if (this.model.get("isCompleted")) {				// toggles between true and false between todo completion. 
 			this.model.set("isCompleted", false);
-			console.log(this.model.get("isCompleted"))
+			$("#todoLeft").text(count + 1)
 		} else {
 			this.model.set("isCompleted", true)
-			console.log(this.model.get("isCompleted"))
+			$("#todoLeft").text(count - 1)
 		}
 	},
 
@@ -25,6 +29,8 @@ var TodoView = Backbone.View.extend({
 		var template = _.template($("#todoTemplate").html());
 		var html = template(this.model.toJSON());
 		this.$el.html(html);
+
+		// this.$el.html("<div>Items left: <span id='todoLeft'> 0 </span> </div> <div>Mark all as complete</div>")
 
 		return this;
 	}

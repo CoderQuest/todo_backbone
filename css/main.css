@@ -5,8 +5,7 @@ Individual todo item
 	list-style: none;
 }
 
-#todoList > li.completed {
-	font-style: italic;
+#todoList > li.completed label {
 	text-decoration: line-through;
 }
 

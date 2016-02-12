@@ -17,16 +17,14 @@
 	<script type="text/javascript" src="js/todosView.js"></script>
 
 	<script id="todoTemplate" type="text/html">
-		<% if (isCompleted) {%>
-			<input type='checkbox' checked id='checkBox'></input> 
-		<% } else { %>
-			<input type='checkbox' id='checkBox'></input> 
-		<% } %>
-		<%= description %>
-	</script>
-
-	<script id="todosTemplate" type="text/html">
-		
+		<label>
+			<% if (isCompleted) {%>
+				<input type='checkbox' checked class='checkBox'></input> 
+			<% } else { %>
+				<input type='checkbox' class='checkBox'></input> 
+			<% } %>
+			<%= description %>
+		</label>
 	</script>
 	
 	<script src="js/main.js"></script>

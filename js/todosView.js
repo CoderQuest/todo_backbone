@@ -11,12 +11,15 @@ var TodosView = Backbone.View.extend({
 		this.$("#todoList").append(view.render().$el);     // adding the new todo to the view
 		this.$("#todoLeft").text(todoLeft)
 	},
-	onTodoLeft: function() {
-		// this.$("span#todoLeft").val(this.model.where({isCompleted: false}).length)
-	},
-
 	events: {
-		"click #addBtn": "onClickAdd"
+		"click #addBtn": "onClickAdd",
+		// "click ul#todoList": "OnClickCount"
+	},
+	OnClickCount: function() {
+		console.log('new to do clicked')
+		var todoLeft = this.model.where({isCompleted: false}).length
+		console.log(this.model.where({isCompleted: false}))
+		this.$("#todoLeft").text(todoLeft)
 	},
 	onClickAdd: function(){
 		var $newTodo = this.$("#newTodo")					
@@ -29,7 +32,6 @@ var TodosView = Backbone.View.extend({
 		this.$el.append("<h2>To Do List</h2>")
 		this.$el.append("<input type='text' id='newTodo'></input>")
 		this.$el.append("<button id='addBtn'>Add item</button>")
-
 		this.$el.append("<ul id='todoList'></ul>")
 		this.model.each(function(todo) {
 			var view = new TodoView({model: todo});
@@ -37,7 +39,7 @@ var TodosView = Backbone.View.extend({
 		})
 
 		
-		this.$el.append("<div>Items left: <span id='todoLeft'> 0 </span> </div>" + "<div>Mark all as complete</div>")
+		this.$el.append("<div>Items left: <span id='todoLeft'> 0 </span> </div> <div>Mark all as complete</div>")
 		return this;
 	}
 });
