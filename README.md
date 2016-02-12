@@ -1,7 +1,7 @@
 # To-Do List using Backbone.js
 
 #### Demo
-This is a simple todo app built with Backbone.js. Clone this repository to view the demo,: 
+This is a simple todo app built with Backbone.js. Clone this repository to view the demo: 
 ```
 $ git clone https://github.com/CoderQuest/todo_backbone.git
 ```
