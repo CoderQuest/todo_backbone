@@ -1,3 +1,6 @@
 var Todos = Backbone.Collection.extend({
-	model: Todo
+	model: Todo,
+	todoLeft: function() {
+		this.where({isCompleted: false}).length
+	}
 });

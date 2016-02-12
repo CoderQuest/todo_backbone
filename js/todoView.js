@@ -22,9 +22,10 @@ var TodoView = Backbone.View.extend({
 	render: function() {
 		
 		this.$el.toggleClass("completed", this.model.get("isCompleted"));
-		var checked = this.model.get('isCompleted') ? "checked" : "";					// fixes the change event(above) refresh issue so that the box is checked when isCompleted = true and vice versa. 
-		// var checked = this.model.get("isCompleted") ? "checked" : "";
-		this.$el.html("<input type='checkbox' id='checkBox' " + checked + "></input> " + this.model.get("description"));
+		var template = _.template($("#todoTemplate").html());
+		var html = template(this.model.toJSON());
+		this.$el.html(html);
+
 		return this;
 	}
 });
