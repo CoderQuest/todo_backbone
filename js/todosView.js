@@ -14,7 +14,7 @@ var TodosView = Backbone.View.extend({
 			isCompleted: false
 		}).length
 		this.$("#todoList").append(view.render().$el); // adding the new todo to the view
-		this.$("#todoLeft").text(todoLeft)
+		this.$("#todoLeft").text(todoLeft);
 	},
 	events: {
 		"click #addBtn": "onClickAdd",
@@ -35,7 +35,7 @@ var TodosView = Backbone.View.extend({
 	onClickAdd: function() {
 		var $newTodo = this.$("#newTodo");
 		if ($newTodo.val()) { // only add to the todo list if there's no empty string in the input
-			var todo = new Todo({ 
+			var todo = new Todo({
 				description: $newTodo.val()
 			});
 			this.model.add(todo); // add the new todo to the todo collection	
@@ -44,17 +44,9 @@ var TodosView = Backbone.View.extend({
 	},
 	render: function() {
 		var self = this;
-		this.$el.append("<h2 id='todoTitle'>To Do List</h2>")
-		this.$el.append("<div id='inputContainer'><input type='text' id='newTodo'></input><button id='addBtn'>Add item</button></div>")
-		this.$el.append("<ul id='todoList'></ul>")
-		this.model.each(function(todo) {
-			var view = new TodoView({
-				model: todo
-			});
-			self.$el.append(view.render().$el);
-		})
-
-		this.$el.append("<footer><div id='todoCount'>Items left: <span id='todoLeft'> 0 </span> </div> <div id='markAll'>Mark all as complete</div></footer>")
+		var template = _.template($("#todosTemplate").html());
+		var html = template(this.model.toJSON());
+		this.$el.html(html);
 
 		return this;
 	}

@@ -16,10 +16,10 @@ var TodoView = Backbone.View.extend({
 		var count = parseInt($("#todoLeft").text())
 		if (this.model.get("isCompleted")) { // toggles between true and false between todo completion. 
 			this.model.set("isCompleted", false);
-			$("#todoLeft").text(count + 1)
+			$("#todoLeft").text(count + 1);
 		} else {
-			this.model.set("isCompleted", true)
-			$("#todoLeft").text(count - 1)
+			this.model.set("isCompleted", true);
+			$("#todoLeft").text(count - 1);
 		}
 	},
 
