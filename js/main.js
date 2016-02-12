@@ -7,5 +7,5 @@ $(document).ready(function(){
 
 	var todosView = new TodosView({model: todos})
 
-	$("body").append(todosView.render().$el);
+	$("#container").append(todosView.render().$el);
 })

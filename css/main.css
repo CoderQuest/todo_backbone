@@ -1,6 +1,62 @@
+/*** Colors
+gray-background = #D6D6D6
+green-button = #30A349
+green-font = #31A34A
+gray-border = #CDCBD4
+***/
+
+/**************
+	General
+**************/
+body {
+	background-color: #D6D6D6;
+}
+
+#container {
+	background-color: #FFF;
+	width: 30%;
+	padding: 20px 10px;
+	margin: 30px auto 0 auto;
+}
+
+/****************
+	Todo Container
+*****************/
+#todoContainer {
+	/*padding: 30px;*/
+	border: 1px #CDCBD4 solid;
+	border-radius: 4px;
+}
+
+/******************
+	input box
+*******************/
+#todoTitle, #inputContainer{
+	text-align: center;
+}
+
+#newTodo {
+	width: 70%;
+	border: 1px solid #CDCBD4;
+	border-right: 0px;
+	height: 37px;
+	border-radius: 4px 0 0 4px;
+}
+
+#addBtn {
+	width: 24%;
+	border: none;
+	padding: 0;
+	height: 41px;
+	border-radius: 0 4px 4px 0;
+	color: #FFF;
+	background-color: #30A349;
+}
+
+
 /****************
 Individual todo item
-*****************/
+****************/
 #todoList {
 	list-style: none;
 }
