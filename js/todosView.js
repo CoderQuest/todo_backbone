@@ -6,8 +6,18 @@ var TodosView = Backbone.View.extend({
 			throw new Error("No model specified");
 		}
 	},
+	events: {
+		"click #addBtn": "onClickAdd"
+	},
+	onClickAdd: function(){
+		// var $newTodo = this.$("#newTodo")
+		// var todo = new Todo({description: $newTodo.val()})
+		// this.model.add(todo);
+	},
 	render: function(){
 		var self = this;
+		this.$el.append("<input type='text' id='newTodo'></input>")
+		this.$el.append("<button id='addBtn'>Add item</button>")
 		this.model.each(function(todo) {
 			var view = new TodoView({model: todo});
 			self.$el.append(view.render().$el);
