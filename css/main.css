@@ -115,3 +115,18 @@ footer:after {		/* create empty block that prevents footer container from collap
 #todoCount {
 	float: left;
 }
+
+/***************
+ Media Queries
+***************/
+
+@media only screen and (min-width: 1920px) {
+	#container {
+		width: 575px;
+	}
+}
+@media only screen and (max-width: 1180px) {
+	#container {
+		width: 350px;
+	}
+}
