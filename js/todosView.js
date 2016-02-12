@@ -54,7 +54,7 @@ var TodosView = Backbone.View.extend({
 			self.$el.append(view.render().$el);
 		})
 
-		this.$el.append("<div>Items left: <span id='todoLeft'> 0 </span> </div> <div id='markAll'>Mark all as complete</div>")
+		this.$el.append("<footer><div id='todoCount'>Items left: <span id='todoLeft'> 0 </span> </div> <div id='markAll'>Mark all as complete</div></footer>")
 
 		return this;
 	}

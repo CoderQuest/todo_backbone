@@ -3,6 +3,7 @@ gray-background = #D6D6D6
 green-button = #30A349
 green-font = #31A34A
 gray-border = #CDCBD4
+gray-list background = #E6E6E9
 ***/
 
 /**************
@@ -23,7 +24,6 @@ body {
 	Todo Container
 *****************/
 #todoContainer {
-	/*padding: 30px;*/
 	border: 1px #CDCBD4 solid;
 	border-radius: 4px;
 }
@@ -41,6 +41,7 @@ body {
 	border-right: 0px;
 	height: 37px;
 	border-radius: 4px 0 0 4px;
+	padding-left: 10px;
 }
 
 #addBtn {
@@ -55,13 +56,45 @@ body {
 
 
 /****************
-Individual todo item
+todo item List
 ****************/
 #todoList {
 	list-style: none;
+	width: 100%;
+  padding-left: 0px;
+  margin-bottom: 20px;
+  min-height: 185px;
+}
+
+#todoList > li {
+	padding: 10px;
+}
+
+#todoList > li:nth-of-type(odd) {			/* Odd number row gets gray background */
+	background-color: #E6E6E9;
 }
 
 #todoList > li.completed label {
 	text-decoration: line-through;
 }
 
+/***********
+	Footer 
+*************/
+footer {
+	padding: 20px 10px;
+  border-top: 1px #CDCBD4 solid;
+}
+footer:after {		/* create empty block that prevents footer container from collapsing due to its child's floating properies.*/
+	display: block;
+	content: "";
+	clear: both;
+}
+
+#markAll {
+	float: right;
+} 
+
+#todoCount {
+	float: left;
+}
