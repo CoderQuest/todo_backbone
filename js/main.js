@@ -1,9 +1,5 @@
 $(document).ready(function(){
-	var todos = new Todos([
-		// new Todo({description: "first todo"}),
-		// new Todo({description: "second todo"}),
-		// new Todo({description: "third todo"})		
-	])
+	var todos = new Todos()
 
 	var todosView = new TodosView({model: todos})
 
