@@ -1,8 +1,10 @@
 var TodoView = Backbone.View.extend({
-	initialize: function(options){   // if model didn't get passed it throws an error
-		if(!(options && options.model)) {
-			throw new Error('model is not specified');
+	tagName: "li",
+	initialize: function(options){   
+		if (!(options && options.model)) {			// if model didn't get passed it throws an error
+			throw new Error("No model specified");
 		}
+		
 	},
 	render: function() {
 		this.$el.html(this.model.get("description"));
