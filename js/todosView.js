@@ -22,6 +22,7 @@ var TodosView = Backbone.View.extend({
 	},
 	render: function(){
 		var self = this;
+		this.$el.append("<h2>To Do List</h2>")
 		this.$el.append("<input type='text' id='newTodo'></input>")
 		this.$el.append("<button id='addBtn'>Add item</button>")
 		this.model.each(function(todo) {
