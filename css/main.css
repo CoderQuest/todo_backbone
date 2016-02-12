@@ -52,6 +52,11 @@ body {
 	border-radius: 0 4px 4px 0;
 	color: #FFF;
 	background-color: #30A349;
+	outline: 0;
+}
+
+#addBtn:hover {
+	background-color: #3BC95B;
 }
 
 
@@ -74,8 +79,13 @@ todo item List
 	background-color: #E6E6E9;
 }
 
-#todoList > li.completed label {
+#todoList > li.completed label .description {
 	text-decoration: line-through;
+	color: #939398;
+}
+
+span.description {
+	padding-left: 12px;
 }
 
 /***********
@@ -93,7 +103,14 @@ footer:after {		/* create empty block that prevents footer container from collap
 
 #markAll {
 	float: right;
+	color: #31A34A;
+	cursor: pointer;
 } 
+
+#markAll:hover {
+	color: #3BC95B;
+	text-decoration: underline;
+}
 
 #todoCount {
 	float: left;
