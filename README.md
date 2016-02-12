@@ -3,7 +3,7 @@
 #### Demo
 This is a simple todo app built with Backbone.js. Clone this repository to view the demo,: 
 ```
-$ git clone git@github.com:CoderQuest/todo_backbone.git
+$ git clone https://github.com/CoderQuest/todo_backbone.git
 ```
 Locate and open `index.html` file with a browser.
 
