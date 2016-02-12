@@ -4,7 +4,8 @@ var Todo = Backbone.Model.extend({
 		todoCount: 0
 	},
 	validate: function(attrs){
-		if (!attrs.description) {					// if no description is entered, return the message.
+		// if no description is entered, return the message.
+		if (!attrs.description) {					
 			return "No description entered!";
 		}
 	}

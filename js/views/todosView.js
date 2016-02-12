@@ -1,10 +1,12 @@
 var TodosView = Backbone.View.extend({
 	id: 'todoContainer',
 	initialize: function(options) {
-		if (!(options && options.model)) { // if model didn't get passed it throws an error
+		// if model didn't get passed it throws an error
+		if (!(options && options.model)) { 
 			throw new Error("No model specified");
 		}
-		this.model.on("add", this.onAddTodo, this); // subscribing to the add todo event and updates the view	
+		// subscribing to the add todo event and updates the view	
+		this.model.on("add", this.onAddTodo, this); 
 	},
 	onAddTodo: function(todo) {
 		var view = new TodoView({
@@ -13,7 +15,10 @@ var TodosView = Backbone.View.extend({
 		var todoLeft = this.model.where({
 			isCompleted: false
 		}).length
-		this.$("#todoList").append(view.render().$el); // adding the new todo to the view
+		// adding the new todo to the view
+		this.$("#todoList").append(view.render().$el); 
+		
+		// shows number of todos left
 		this.$("#todoLeft").text(todoLeft);
 	},
 	events: {
@@ -21,25 +26,32 @@ var TodosView = Backbone.View.extend({
 		"keypress #newTodo": "onKeyPress",
 		"click #markAll": "onClickMarkAll"
 	},
-	onKeyPress: function(e) { // When "Enter" key is pressed new todo will be added to the list		
-		if (e.keyCode === 13) { // 13 is the keycode for 'Enter'
+	// When "Enter" key is pressed new todo will be added to the list		
+	onKeyPress: function(e) { 
+		// 13 is the keycode for 'Enter'
+		if (e.keyCode === 13) { 
 			this.onClickAdd();
 		}
 	},
 	onClickMarkAll: function() {
-		this.model.map(function(todo) { // goes through the collection and set all model's isCompleted to true
+		// goes through the collection and set all model's isCompleted to true
+		this.model.map(function(todo) { 
 			todo.set("isCompleted", true)
 		});
-		$("#todoLeft").text(0) // Items left count becomes 0 since everything is marked completed. 
+		// todo left count becomes 0 since everything is marked completed. 
+		$("#todoLeft").text(0) 
 	},
 	onClickAdd: function() {
 		var $newTodo = this.$("#newTodo");
-		if ($newTodo.val()) { // only add to the todo list if there's no empty string in the input
+		// only add to the todo list if there's no empty string in the input
+		if ($newTodo.val()) { 
 			var todo = new Todo({
 				description: $newTodo.val()
 			});
-			this.model.add(todo); // add the new todo to the todo collection	
-			$newTodo.val(""); // clear the text box after the item is added to the list.
+			// add the new todo to the todo collection	
+			this.model.add(todo); 
+			// clear the text box after the item is added to the list.
+			$newTodo.val(""); 
 		}
 	},
 	render: function() {

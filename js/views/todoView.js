@@ -1,10 +1,12 @@
 var TodoView = Backbone.View.extend({
 	tagName: "li",
 	initialize: function(options) {
-		if (!(options && options.model)) { // if model didn't get passed it throws an error
+		// if model didn't get passed it throws an error
+		if (!(options && options.model)) {
 			throw new Error("No model specified");
 		}
-		this.model.on("change", this.render, this); // refreshes the view so .toggleClass(below) gets updated
+		// refreshes the view so .toggleClass(below) gets updated
+		this.model.on("change", this.render, this);
 	},
 	events: {
 		"click .checkBox": "onClickCheckBox"
@@ -14,7 +16,8 @@ var TodoView = Backbone.View.extend({
 	},
 	onClickCheckBox: function() {
 		var count = parseInt($("#todoLeft").text())
-		if (this.model.get("isCompleted")) { // toggles between true and false between todo completion. 
+			// toggles between true and false between todo completion. 
+		if (this.model.get("isCompleted")) {
 			this.model.set("isCompleted", false);
 			$("#todoLeft").text(count + 1);
 		} else {
@@ -29,8 +32,6 @@ var TodoView = Backbone.View.extend({
 		var template = _.template($("#todoTemplate").html());
 		var html = template(this.model.toJSON());
 		this.$el.html(html);
-
-		// this.$el.html("<div>Items left: <span id='todoLeft'> 0 </span> </div> <div>Mark all as complete</div>")
 
 		return this;
 	}
