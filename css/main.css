@@ -126,13 +126,13 @@ footer:after {		/* create empty block that prevents footer container from collap
 	clear: both;
 }
 
-#markAll {
+#markAll, #unmarkAll {
 	float: right;
 	color: #31A34A;
 	cursor: pointer;
 } 
 
-#markAll:hover {
+#markAll:hover, #unmarkAll:hover {
 	color: #3BC95B;
 	text-decoration: underline;
 }

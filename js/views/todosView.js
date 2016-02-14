@@ -2,56 +2,68 @@ var TodosView = Backbone.View.extend({
 	id: 'todoContainer',
 	initialize: function(options) {
 		// if model didn't get passed it throws an error
-		if (!(options && options.model)) { 
+		if (!(options && options.model)) {
 			throw new Error("No model specified");
 		}
 		// subscribing to the add todo event and updates the view	
-		this.model.on("add", this.onAddTodo, this); 
+		this.model.on("add", this.onAddTodo, this);
 	},
 	onAddTodo: function(todo) {
 		var view = new TodoView({
 			model: todo
 		});
 		var todoLeft = this.model.where({
-			isCompleted: false
-		}).length
-		// adding the new todo to the view
-		this.$("#todoList").append(view.render().$el); 
-		
+				isCompleted: false
+			}).length
+			// adding the new todo to the view
+		this.$("#todoList").append(view.render().$el);
+
 		// shows number of todos left
 		this.$("#todoLeft").text(todoLeft);
 	},
 	events: {
 		"click #addBtn": "onClickAdd",
 		"keypress #newTodo": "onKeyPress",
-		"click #markAll": "onClickMarkAll"
+		"click #markAll": "onClickMarkAll",
+		"click #unmarkAll": "onClickUnmarkAll"
 	},
 	// When "Enter" key is pressed new todo will be added to the list		
-	onKeyPress: function(e) { 
+	onKeyPress: function(e) {
 		// 13 is the keycode for 'Enter'
-		if (e.keyCode === 13) { 
+		if (e.keyCode === 13) {
 			this.onClickAdd();
 		}
 	},
 	onClickMarkAll: function() {
 		// goes through the collection and set all model's isCompleted to true
-		this.model.map(function(todo) { 
+		this.model.map(function(todo) {
 			todo.set("isCompleted", true)
 		});
 		// todo left count becomes 0 since everything is marked completed. 
-		$("#todoLeft").text(0) 
+		$("#todoLeft").text(0);
+		$("#markAll").text("Unmark all").attr('id', 'unmarkAll');
+	},
+	onClickUnmarkAll: function() {
+		// unmark the whole list and adjust it's counting number
+		this.model.map(function(todo) {
+			todo.set("isCompleted", false)
+		});
+
+		var count = this.model.where({isCompleted: false}).length;
+		$("#unmarkAll").text("Mark all as complete").attr('id', 'markAll');
+		$("#todoLeft").text(count);
 	},
 	onClickAdd: function() {
 		var $newTodo = this.$("#newTodo");
 		// only add to the todo list if there's no empty string in the input
-		if ($newTodo.val()) { 
+		if ($newTodo.val()) {
 			var todo = new Todo({
 				description: $newTodo.val()
 			});
 			// add the new todo to the todo collection	
-			this.model.add(todo); 
+			this.model.add(todo);
 			// clear the text box after the item is added to the list.
-			$newTodo.val(""); 
+			$newTodo.val("");
 		}
 	},
 	render: function() {

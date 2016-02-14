@@ -27,9 +27,10 @@ var TodoView = Backbone.View.extend({
 	onClickDelBtn: function() {
 		var count = parseInt($("#todoLeft").text())
 		this.remove();
+		// removes item from the model
+		this.model.trigger('delete', this.model);
 		if (count != 0) {
 			$("#todoLeft").text(count - 1);
-			this.hide('slow');
 		};
 	},
 	render: function() {
