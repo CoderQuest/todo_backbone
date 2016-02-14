@@ -55,10 +55,9 @@ body {
 	outline: 0;
 }
 
-#addBtn:hover {
+#addBtn:active {
 	background-color: #3BC95B;
 }
-
 
 /****************
 todo item List
