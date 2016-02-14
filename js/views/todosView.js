@@ -35,13 +35,15 @@ var TodosView = Backbone.View.extend({
 		}
 	},
 	onClickMarkAll: function() {
+		if ($("#todoLeft").text() != 0 ) {
 		// goes through the collection and set all model's isCompleted to true
-		this.model.map(function(todo) {
-			todo.set("isCompleted", true)
-		});
-		// todo left count becomes 0 since everything is marked completed. 
-		$("#todoLeft").text(0);
-		$("#markAll").text("Unmark all").attr('id', 'unmarkAll');
+			this.model.map(function(todo) {
+				todo.set("isCompleted", true)
+			});
+			// todo left count becomes 0 since everything is marked completed. 
+			$("#todoLeft").text(0);
+			$("#markAll").text("Unmark all").attr('id', 'unmarkAll');
+		}	
 	},
 	onClickUnmarkAll: function() {
 		// unmark the whole list and adjust it's counting number
