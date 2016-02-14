@@ -9,10 +9,8 @@ var TodoView = Backbone.View.extend({
 		this.model.on("change", this.render, this);
 	},
 	events: {
-		"click .checkBox": "onClickCheckBox"
-	},
-	OnClickCount: function() {
-		console.log("click")
+		"click .checkBox": "onClickCheckBox",
+		"click #deleteBtn": "onClickDelBtn"
 	},
 	onClickCheckBox: function() {
 		var count = parseInt($("#todoLeft").text())
@@ -25,7 +23,14 @@ var TodoView = Backbone.View.extend({
 			$("#todoLeft").text(count - 1);
 		}
 	},
-
+	// removing a todo item
+	onClickDelBtn: function() {
+		var count = parseInt($("#todoLeft").text())
+		this.remove();
+		if (count != 0) {
+			$("#todoLeft").text(count - 1);
+		};
+	},
 	render: function() {
 
 		this.$el.toggleClass("completed", this.model.get("isCompleted"));

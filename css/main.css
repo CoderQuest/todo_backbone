@@ -75,6 +75,16 @@ todo item List
 	padding: 10px;
 }
 
+#todoList > li:after {			/* clear float so li tag doesn't collasp*/
+	display: table;
+	content: "";
+	clear: both;
+}
+
+#todoList > li > label {
+	float: left;
+}
+
 #todoList > li:nth-of-type(odd) {			/* Odd number row gets gray background */
 	background-color: #E6E6E9;
 }
@@ -86,6 +96,15 @@ todo item List
 
 span.description {
 	padding-left: 12px;
+}
+
+#todoList > li > #deleteBtn {
+	float: right;
+	background-color: #FF0403;
+	outline: 0;
+	border: none;
+	border-radius: 4px;
+	color: #FFF;
 }
 
 /***********
