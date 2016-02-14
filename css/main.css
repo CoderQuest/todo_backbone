@@ -107,6 +107,12 @@ span.description {
 	color: #FFF;
 }
 
+#todoList > li > #deleteBtn:active {
+	background-color: #000;
+}
+
+
+
 /***********
 	Footer 
 *************/

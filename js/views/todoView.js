@@ -29,6 +29,7 @@ var TodoView = Backbone.View.extend({
 		this.remove();
 		if (count != 0) {
 			$("#todoLeft").text(count - 1);
+			this.hide('slow');
 		};
 	},
 	render: function() {
